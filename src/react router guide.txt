@@ -1,0 +1,43 @@
+Steps for routing in React:
+
+1- yarn add node-sass
+
+2- go to index.js and do the following:
+
+import { BrowserRouter } from "react-router-dom";
+
+ReactDOM.render(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>,
+  document.getElementById("root")
+);
+
+
+3- go to app.js and do the following :
+
+import { Route, Switch } from 'react-router-dom'
+
+function App() {
+  return (
+    <div>
+      <Switch>
+        <Route exact path='/' component={HomePage} />
+      </Switch>
+    </div>
+  );
+}
+
+
+
+4: go to child components and write this code in order to navigate :
+
+import { withRouter } from 'react-router-dom';
+
+const MenuItem = ({ history, linkUrl, match }) => (
+    <div onClick={() => history.push(`${match.url}${linkUrl}`)}>
+        Navigate Here
+    </div>
+)
+
+export default withRouter(MenuItem);
